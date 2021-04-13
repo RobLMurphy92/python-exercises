@@ -19,11 +19,16 @@
 #c.)Create a jupyter notebook named import_exercises.ipynb. Use from to import the get_letter_grade function and give it an alias. Test this function in your notebook.
 #from function_exercises import calculate_tip
 
+from function_exercises import get_letter_grade as glg
+
+glg(16)
+# F
+
 #In [5]: calculate_tip(100)
 #Out[5]: 18.0
 
 #2.) Read about and use the itertools module from the python standard library to help you solve the following problems:
-
+import itertools 
 # 2.a)How many different ways can you combine the letters from "abc" with the numbers 1, 2, and 3?
 alpha = ['a', 'b', 'c']
 numb = [1,2,3]
@@ -33,7 +38,7 @@ def combine_lt_numb(alpha, numb):
     return len(list(itertools.product(alpha, numb)))
 
 
-    
+ len(list(itertools.product('abc', '123')))   
         
   
 combine_lt_numb(alpha, numb)
@@ -44,6 +49,9 @@ print(list(itertools.product(alpha, numb)),len(list(itertools.product(alpha, num
 alpha = ['a', 'b', 'c','d']
 
 combo = list(itertools.combinations(alpha, 2))
+
+len(list(itertools.combinations('abcd', 2)))
+
 
 combo
 # How many different permutations are there of 2 letters from "abcd"?
@@ -85,3 +93,88 @@ for profile in profiles:
     if profile['isActive'] == True:
         count +=1
 print(count)
+
+
+# Number of inactive users
+count = 0
+for profile in profiles:
+    if profile['isActive'] == False:
+        count +=1
+print(count)
+# madeline method
+inactive_users = []
+for accnt in profiles:
+    if not accnt['isActive']:
+        inactive_users.append(accnt)
+        
+inactive_users
+
+# Grand total of balances for all users
+balances = float(profile['balance'].replace(',', '').replace('$', ''))
+balances
+
+count = 0
+for profile in profiles:
+    profile_balance = float(profile['balance'].replace(',', '').replace('$', ''))
+    count += profile_balance
+print(count)
+
+#madeline method
+bal_list = []
+for accnt in profiles:
+    bal_list.append(float(accnt['balance'][1:].replace(',','')))
+sum(bal_list) # with lists we dont have to add all through!!
+
+
+# Average balance per user
+count = 0
+for profile in profiles:
+    profile_balance = float(profile['balance'].replace(',', '').replace('$', ''))
+    count += profile_balance
+average = count/len(profiles)
+round(average, 2)
+
+
+
+#User with the lowest balance
+min_user = {}
+for accnt in profiles:
+    if float(accnt['balance'][1:].replace(',','')) == min(bal_list):
+        min_user = accnt
+    
+        
+min_user['name']
+
+
+# User with the highest balance
+max_user = []
+for accnt in profiles:
+    bal_list_2.append(float(accnt['balance'][1:].replace(',','')))
+min(bal_list) # with lists we dont have to add all through!!
+print(max(bal_list))
+
+# Most common favorite fruit
+fruit_list = [accnt['favoriteFruit'] for accnt in profiles]
+
+fruit_counts = {}
+for fruit in fruit_list:
+    if fruit not in fruit_counts.keys():
+        fruit_counts[fruit] = 1
+    else:
+        fruit_counts[fruit] += 1
+        
+fruit_counts
+
+# Least most common favorite fruit
+fruit_list = [accnt['favoriteFruit'] for accnt in profiles]
+
+fruit_counts = {}
+for fruit in fruit_list:
+    if fruit not in fruit_counts.keys():
+        fruit_counts[fruit] = 1
+    else:
+        fruit_counts[fruit] += 1
+
+fruit_counts
+#Total number of unread messages for all users
+int(''.join([val for val in accnt['greeting'] if val.isdigit()])) for accnt in profiles])
