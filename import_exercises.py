@@ -52,3 +52,36 @@ alpha = ['a', 'b', 'c','d']
 permu = list(itertools.permutations(alpha, 2))
 
 permu
+
+#3.)Save this file as profiles.json inside of your exercises directory (right click -> save file as...).
+#Use the load function from the json module to open this file.
+#Use the load function from the json module to open this file.
+import json
+json.load(open('profiles.json')
+
+#Total number of users
+#Number of active users
+#Number of inactive users
+#Grand total of balances for all users
+#Average balance per user
+#User with the lowest balance
+#User with the highest balance
+#Most common favorite fruit
+#Least most common favorite fruit
+#Total number of unread messages for all users
+
+
+
+
+#total number of users
+
+len(profiles)
+
+
+
+# count of users who are active
+count = 0
+for profile in profiles:
+    if profile['isActive'] == True:
+        count +=1
+print(count)
