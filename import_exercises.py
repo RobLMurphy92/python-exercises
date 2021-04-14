@@ -161,9 +161,17 @@ for fruit in fruit_list:
     if fruit not in fruit_counts.keys():
         fruit_counts[fruit] = 1
     else:
-        fruit_counts[fruit] += 1
+        fruit_counts[fruit] += fruit_counts[fruit] + 1
         
 fruit_counts
+
+
+#madeline method
+fruitcount_dict = fruit_counts(all_fruits)
+fave_fruit = [fruit for fruit in fruitcount_dict \
+    if fruitcount_dict[fruit] == max(fruitcount_dict.values())][0]
+print(f'Most popular fruit: {fave_fruit}')
+
 
 # Least most common favorite fruit
 fruit_list = [accnt['favoriteFruit'] for accnt in profiles]
@@ -176,5 +184,38 @@ for fruit in fruit_list:
         fruit_counts[fruit] += 1
 
 fruit_counts
+
+#madeline method
+least_fave_fruit = ''
+for k, v in fruitcount_dict.items():
+    if v == min(fruitcount_dict.values()):
+        print('least favorite fruit: ',k)
+
 #Total number of unread messages for all users
-int(''.join([val for val in accnt['greeting'] if val.isdigit()])) for accnt in profiles])
+#madeline method
+list_comp_all_unreads = sum([int(''.join([val for val in accnt['greeting'] if val.isdigit()])) for accnt in profiles])
+# 
+# breaking it down:
+# 
+# single greeting value:
+profiles[0]['greeting']
+# pulling out the digits from that greeting into a list:
+digit_list = []
+for letter in profiles[0]['greeting']:
+    if letter.isdigit():
+        digit_list.append(letter)
+# this gives us a digit list that looks like ['4'] or like ['1','9'] -- we want a single int.
+# to join the list, we use the join string method
+digit_as_string = ''.join(digit_list)
+# finally we want to cast it to an integer data type
+digit = int(digit_as_string)
+# Now, we want to do this for every account in the profile
+list_of_unread_messages = []
+for accnt in profiles:
+    # do everything we just did for every dictionary referenced here as accnt
+    digit_list = []
+    for letter in accnt['greeting']:
+        if letter.isdigit():
+            digit_list.append(letter)
+    digit_as_string = ''.join(digit_list)
+    digit = int(digit_as_string)
