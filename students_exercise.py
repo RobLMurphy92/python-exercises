@@ -546,15 +546,8 @@ print('The average grade for students with zero pets is', total_grades/number_gr
 # In[ ]:
 
 
+
 #15.)What is the average grade for web development students? data science students?
-total_wd_grades = 0
-number_wd
-
-
-# In[215]:
-
-
-#16.)What is the average grade for web development students? data science students?
 total_wd_grades = 0
 number_wd_grades = 0
 total_ds_grades = 0
@@ -578,7 +571,20 @@ print('Average grade for data science is,',total_ds_grades/number_ds_grades)
 
 
 # In[216]:
+# 16.) What is the average grade range 
+#(i.e. highest grade - lowest grade) for dark coffee drinkers?
+# need the indivual ranges/.
+dark_range = 0
+number_dark = 0
 
+for x in students:
+    if x['coffee_preference'] == 'dark':
+        dark_range += max(x['grades']) - min(x['grades'])
+        number_dark += 1
+        
+average_grade_range = (dark_range / number_dark)  
+
+print(average_grade_range)
 
 
 
@@ -610,10 +616,19 @@ student.values()
 
 
 # 18.)What is the most common type of pet for web development students? # could use counter 
-for x in students:
-    if x['course'] == 'web development':
-        if x['pet ']
-  
+web_pets = {}
+web_pets_str = []
+for student in students:
+    if student['course'] == 'web development':
+        for pet in student['pets']:
+            if pet['species'] not in web_pets:
+                web_pets[pet['species']] =1
+            else:
+                web_pets[pet['species']] += 1
+                
+common_pet_web = [key for key , pets in web_pets.items() if pets == max(web_pets.values())]
+                
+common_pet_web
     
 
     
@@ -628,26 +643,18 @@ for x in students:
 # want length of name
 # want name to be striped
 # average length / total_names
+
 total_student = 0
-student_name = []
-student_name_no_space = len('student')
+student_name = 0
 for x in students:
     if x['student'] != 0:
         total_student += 1
-        student_name.append(x['student'])
+        student_name += len(x['student'].strip().replace(' ', ''))
+print(student_name/total_student)
 
 
     
     
-    
-
-    
-
-    
-
-print(total_student)
-print(student_name)
-print(student_name_no_space)
 
 
 # In[ ]:
